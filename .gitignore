@@ -1,0 +1,10 @@
+.vagrant
+.librarian
+.tmp/
+/manifests
+/modules
+/local-modules
+/hieradata
+/hiera-vagrant.yaml
+/Puppetfile.lock
+/Puppetfile
