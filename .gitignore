@@ -3,7 +3,7 @@
 .tmp/
 /manifests
 /modules
-/local-modules
+/modules-local
 /hieradata
 /hiera-vagrant.yaml
 /Puppetfile.lock
