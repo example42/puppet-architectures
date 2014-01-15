@@ -1,0 +1,150 @@
+#!/bin/bash
+
+
+if ( [ ! -f Vagrantfile ] || [ ! -d architectures ] ) ; then
+  echo "Cant find Vagrantfile"
+  echo "Change your cwd to your cloned puppet-architectures directory and then run ./parc"
+  exit 1
+fi
+
+architecturedir='architectures'
+
+showhelp () {
+cat << EOF
+
+Play in Puppet Playground.
+
+This command manages the playground: Vagrantfile, Puppetfile, modules/ and manifests/
+
+Usage: parc <action> [argument]
+parc status                  - Show status
+parc list                    - List the architectures available for symlinking
+parc install <architecture>  - Link the specified architecture
+
+See README for more details.
+EOF
+}
+
+SETCOLOR_NORMAL="echo -en \\033[0;39m"
+SETCOLOR_TITLE="echo -en \\033[0;35m"
+SETCOLOR_BOLD="echo -en \\033[0;1m"
+
+echo_title () {
+ echo
+ $SETCOLOR_BOLD ; echo $1 ; $SETCOLOR_NORMAL
+}
+
+ask_confirm () {
+cat << EOF
+Going to relink another architecture,
+local changes remain in the architecture dir you were working on
+EOF
+
+  read answer
+  [ "x$answer" == "xy" ] || exit 3
+}
+
+list_architecture() {
+  echo_title "Available architectures for $0 install"
+  ls -1 $architecturedir
+}
+
+install_architecture() {
+  clean
+  echo_title "Installing $1"
+  install_cmd="ln -sf"
+#  install_cmd="cp -a"
+  $install_cmd $1/Puppetfile Puppetfile
+  $install_cmd $1/manifests manifests 
+  $install_cmd $1/modules-local modules-local
+  $install_cmd $1/hieradata hieradata 
+  [ -f $1/hiera-vagrant.yaml ] && $install_cmd $1/hiera-vagrant.yaml hiera-vagrant.yaml  
+#  [ -f $1/Vagrantfile ] && $install_cmd $1/Vagrantfile Vagrantfile
+
+  echo_title "Running librarian-puppet install"  
+  librarian-puppet install
+}
+
+run_puppi() {
+  echo_title "Running puppi $puppi_action on the active boxes of the Playground"
+  for vm in $(vagrant status | grep 'running$' | cut -d ' ' -f 1 ) ; do
+    echo_title "puppi check on $vm"
+    vagrant ssh $vm -c "sudo /usr/sbin/puppi $puppi_action"
+  done
+}
+
+setup_default() {
+  echo_title "Recovering default Vagrantfile"
+  cp -f Vagrantfile.default Vagrantfile
+}
+
+clean() {
+#  ask_confirm
+#  echo_title "Removing modules dir, manifests/init.pp and Puppetfile from the Playground"
+  rm -rf modules-local
+  rm -rf manifests
+  rm -rf hieradata
+  rm -f hiera-vagrant.yaml
+  rm -f Puppetfile
+  rm -f Puppetfile.lock
+}
+
+clean_librarian() {
+  echo_title "Executing librarian-puppet clean"
+  librarian-puppet clean
+}
+
+status() {
+  echo_title "Modules status (puppet module list --modulepath=modules/) "
+  puppet module list --modulepath=modules/
+
+  echo_title "Current Vagrant directory"
+  ls -l 
+}
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    list)
+      action=$1
+      shift
+      ;;
+    status)
+      action=$1
+      shift
+      ;;
+    install)
+      action=$1
+      architecture=$2
+      shift 2
+      ;;
+    setup)
+      action=$1
+      setup_action=$2
+      shift 2
+      ;;
+    puppi)
+      action=$1
+      shift
+      puppi_action=$*
+      shift $#
+      ;;
+    *)
+      showhelp
+      exit
+      ;;
+  esac
+done
+
+case $action in 
+  list) list_architecture ;;
+  install) install_architecture $architecturedir/$architecture ;;
+  import) install_architecture $architecture_path ;;
+  status) status ;;
+  run ) run_playground $run_vm ;;
+  up ) up_playground $up_vm ;;
+  setup ) setup_$setup_action ;;
+  forge ) run_forge ;;
+  puppi ) run_puppi ;;
+  * ) showhelp ;;
+esac
+
