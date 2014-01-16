@@ -15,14 +15,14 @@ default_cpu = '1'
 
 # Nodes list
 nodes = [
-  { :hostname => 'puppet',    :ip => '10.42.10.51',  :puppetmode => 'apply', ram: '515', cpu: '2' },
-  { :hostname => 'lb01',      :ip => '10.42.10.11',  :puppetmode => 'agent' },
-  { :hostname => 'web01',     :ip => '10.42.10.101', :puppetmode => 'agent' },
-  { :hostname => 'web02',     :ip => '10.42.10.102', :puppetmode => 'agent' },
-  { :hostname => 'db01',      :ip => '10.42.10.141', :puppetmode => 'agent', ram: '512' },
-  { :hostname => 'el01',      :ip => '10.42.10.151', :puppetmode => 'agent' },
-  { :hostname => 'log01',     :ip => '10.42.10.21',  :puppetmode => 'agent' },
-  { :hostname => 'monitor01', :ip => '10.42.10.31',  :puppetmode => 'agent' },
+  { :hostname => 'puppet',    :ip => '10.42.42.10',  :puppetmode => 'apply', ram: '515', cpu: '2' },
+  { :hostname => 'lb01',      :ip => '10.42.42.91',  :puppetmode => 'agent' },
+  { :hostname => 'web01',     :ip => '10.42.42.101', :puppetmode => 'agent' },
+  { :hostname => 'web02',     :ip => '10.42.42.102', :puppetmode => 'agent' },
+  { :hostname => 'db01',      :ip => '10.42.42.141', :puppetmode => 'agent', ram: '512' },
+  { :hostname => 'el01',      :ip => '10.42.42.151', :puppetmode => 'agent' },
+  { :hostname => 'log',       :ip => '10.42.42.15',  :puppetmode => 'agent' },
+  { :hostname => 'mon',       :ip => '10.42.42.16',  :puppetmode => 'agent' },
 ]
 
 # Boxes available
