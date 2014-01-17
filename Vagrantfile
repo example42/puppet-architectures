@@ -65,28 +65,28 @@ Vagrant.configure("2") do |config|
         v.customize [ 'setextradata', :id, 'VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root', '1']
       end
     end
+  end
 
 # Shell provisioner, to setup minimal conditions for Puppet provisioning
-    config.vm.provision "shell", path: 'bin/setup-' + boxes[default_os.to_sym][:breed] + '.sh'
+  config.vm.provision "shell", path: 'bin/setup-' + boxes[default_os.to_sym][:breed] + '.sh'
 
 # Puppet provisioner configuration
-    config.vm.provision :puppet do |puppet|
-      puppet.hiera_config_path = 'hiera-vagrant.yaml' if node[:puppetmode] != 'agent'
-      puppet.working_directory = '/vagrant' if node[:puppetmode] != 'agent'
-      puppet.manifests_path = 'manifests' 
-      puppet.manifest_file = 'site.pp' 
-      puppet.module_path = [ 'modules' , 'modules-local' ]
-#      puppet.puppet_server = 'puppet01' + domain if node[:puppetmode] == 'agent'
+  config.vm.provision :puppet do |puppet|
+    puppet.hiera_config_path = 'hiera-vagrant.yaml'
+    puppet.working_directory = '/vagrant'
+    puppet.manifests_path = 'manifests' 
+    puppet.manifest_file = 'site.pp' 
+    puppet.module_path = [ 'modules' , 'modules-local' ]
+#    puppet.puppet_server = 'puppet01' + domain if nodes[:puppetmode] == 'agent'
 
-      puppet.options = [
-        '--verbose',
-        '--report',
-        '--show_diff',
-        '--pluginsync',
-#        '--debug',
-#        '--parser future',
-      ]
-    end
+    puppet.options = [
+      '--verbose',
+      '--report',
+      '--show_diff',
+      '--pluginsync',
+#      '--debug',
+#      '--parser future',
+    ]
   end
 end
 
