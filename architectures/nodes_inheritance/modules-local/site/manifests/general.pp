@@ -1,8 +1,13 @@
 class site::general {
 
-  include resolver
+  class { 'resolver':
+    dns_servers => $dns_servers,
+  }
+
+  class { 'timezone':
+    timezone => $timezone,
+  }
   include openssh
-  include timezone
   include puppet
 
 }

@@ -15,6 +15,10 @@ Exec {
 # Default node
 node default {
   $role = 'default'
+
+  # Infrastructure parameters ( May stay here and be managed by inheritance or be set in site module)
+  $dns_servers = [ '8.8.8.8' , '8.8.4.4' ]
+  $timezone = 'Europe/Rome'
 }
 
 # Environments
