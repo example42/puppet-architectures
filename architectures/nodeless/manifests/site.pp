@@ -14,15 +14,14 @@ Exec {
 
 # Roles are based on hostnames
 case $::hostname {
-  /^web-/: { $role = 'web' }
-  /^puppet/: { $role = 'puppet' }
-  /^puppetdb/: { $role = 'puppetdb' }
+  /^web/: { $role = 'web' }
+  /^puppet/: { $role = 'puppetmaster' }
   /^lb/: { $role = 'lb' }
   /^log/: { $role = 'log' }
   /^db/: { $role = 'db' }
   /^el/: { $role = 'el' }
-  /^monitor/: { $role = 'monitor' }
-  default: { $role = 'default' }
+  /^mon/: { $role = 'mon' }
+  default: {  }
 }
 
 # Env is based on hostname or (sub) domain
