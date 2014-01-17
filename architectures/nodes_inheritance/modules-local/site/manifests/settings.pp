@@ -1,0 +1,3 @@
+class site::settings {
+
+}
