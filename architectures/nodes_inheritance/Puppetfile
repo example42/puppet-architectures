@@ -5,6 +5,7 @@ mod 'puppetlabs/concat'
 mod 'puppetlabs/apache'
 mod 'puppetlabs/puppetdb'
 
+mod 'dalen/puppetdbquery'
 mod 'example42/puppi'
 mod 'example42/stdmod'
 
@@ -25,3 +26,4 @@ mod 'example42/haproxy'
 #mod 'example42/logstash'
 mod 'example42/mysql'
 # mod 'example42/nagios'
+
