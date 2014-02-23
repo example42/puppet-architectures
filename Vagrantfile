@@ -76,7 +76,7 @@ Vagrant.configure("2") do |config|
     puppet.working_directory = '/vagrant'
     puppet.manifests_path = 'manifests' 
     puppet.manifest_file = 'site.pp' 
-    puppet.module_path = [ 'modules' , 'modules-local' ]
+    puppet.module_path = [ 'modules' , 'site' ]
 #    puppet.puppet_server = 'puppet01' + domain if nodes[:puppetmode] == 'agent'
 
     puppet.options = [
