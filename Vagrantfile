@@ -42,8 +42,13 @@ Vagrant.configure("2") do |config|
   # Cache plugin
   config.cache.auto_detect = true
 
+  # Shell provisioner, to setup minimal conditions for Puppet provisioning
+  config.vm.provision "shell", path: 'bin/setup-' + boxes[default_os.to_sym][:breed] + '.sh'
+
   # Nodes configuration
   nodes.each do |node|
+
+    config.vm.provision "shell", path: 'bin/setup-puppetmaster.sh' if node[:hostname] == 'puppet'
 
     config.vm.define node[:hostname] do |node_config|
       node_config.vm.box = boxes[default_os.to_sym][:box]
@@ -66,9 +71,6 @@ Vagrant.configure("2") do |config|
       end
     end
   end
-
-# Shell provisioner, to setup minimal conditions for Puppet provisioning
-  config.vm.provision "shell", path: 'bin/setup-' + boxes[default_os.to_sym][:breed] + '.sh'
 
 # Puppet provisioner configuration
   config.vm.provision :puppet do |puppet|

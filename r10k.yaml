@@ -1,0 +1,5 @@
+:cachedir: '/var/cache/r10k'
+:sources:
+  :site:
+    remote: 'https://github.com/example42/puppet-architectures'
+    basedir: '/etc/puppet/environments'

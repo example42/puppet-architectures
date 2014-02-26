@@ -7,12 +7,12 @@ if [ ! -f puppetlabs-release-precise.deb ] ; then
   apt-get install -y puppet
 fi
 
-gem list | grep hiera-file
+gem list | grep hiera-file > /dev/null
 if [ "x$?" == "x1" ] ; then
   gem install hiera-file
 fi
 
-gem list | grep hiera-eyaml
+gem list | grep hiera-eyaml > /dev/null
 if [ "x$?" == "x1" ] ; then
   gem install hiera-eyaml
 fi

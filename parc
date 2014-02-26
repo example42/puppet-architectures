@@ -59,6 +59,7 @@ install_architecture() {
   $install_cmd $1/site site
   $install_cmd $1/hieradata hieradata 
   [ -f $1/hiera-vagrant.yaml ] && $install_cmd $1/hiera-vagrant.yaml hiera-vagrant.yaml  
+  [ -f $1/hiera.yaml ] && $install_cmd $1/hiera.yaml hiera.yaml  
 #  [ -f $1/Vagrantfile ] && $install_cmd $1/Vagrantfile Vagrantfile
 
   echo_title "Running librarian-puppet install"  
@@ -85,6 +86,7 @@ clean() {
   rm -rf manifests
   rm -rf hieradata
   rm -f hiera-vagrant.yaml
+  rm -f hiera.yaml
   rm -f Puppetfile
   rm -f Puppetfile.lock
 }
