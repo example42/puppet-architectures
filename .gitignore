@@ -1,10 +1,5 @@
 .vagrant
 .librarian
 .tmp/
-/manifests
 /modules
-/modules-local
-/hieradata
-/hiera-vagrant.yaml
 /Puppetfile.lock
-/Puppetfile
