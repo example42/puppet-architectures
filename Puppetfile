@@ -5,6 +5,7 @@ mod 'puppetlabs/concat'
 mod 'puppetlabs/apache'
 mod 'puppetlabs/puppetdb'
 mod 'puppetlabs/postgresql'
+mod 'puppetlabs/inifile'
 
 mod 'dalen/puppetdbquery'
 mod 'example42/puppi'
