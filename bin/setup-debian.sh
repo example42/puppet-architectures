@@ -7,6 +7,8 @@ if [ ! -f puppetlabs-release-precise.deb ] ; then
   apt-get install -y puppet
 fi
 
+dpkg -s git || apt-get install git -y
+
 gem list | grep hiera-file > /dev/null
 if [ "x$?" == "x1" ] ; then
   gem install hiera-file

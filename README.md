@@ -1,8 +1,8 @@
-= Puppet Architectures
+# Puppet Architectures
 
 Sample Puppet architectures layouts for the book "Puppet Architectures"  which can be tested via Vagrant.
 
-== Usage
+## Usage
 
 This is a multi vm Vagrant environment where you can test different Puppet setups.
 The usual vagrant commands apply.
@@ -14,7 +14,7 @@ Required software:
 - Vagrant plugin: cachier
 - Vagrant plugin: vbguest (Optional)
 
-== Issues
+## Issues
 
 If you have problems with shared folders be sure to have on the used Vagrant boxes a version of VirtualBox additions compatible
 with the one of your Host.

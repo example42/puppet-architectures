@@ -7,6 +7,7 @@ if [ "x$?" == "x1" ] ; then
   gem install r10k
 fi
 
+
 r10k deploy environment --config /vagrant/r10k.yaml 
 
 service puppetmaster stop
