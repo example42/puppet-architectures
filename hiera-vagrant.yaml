@@ -7,5 +7,5 @@
   - common
 
 :yaml:
-  :datadir: /etc/puppet/hieradata
+  :datadir: /vagrant/hieradata
 
