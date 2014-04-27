@@ -11,10 +11,10 @@ dpkg -s git || apt-get install git -y
 
 gem list | grep hiera-file > /dev/null
 if [ "x$?" == "x1" ] ; then
-  gem install hiera-file
+  gem install --no-ri --no-rdoc hiera-file
 fi
 
 gem list | grep hiera-eyaml > /dev/null
 if [ "x$?" == "x1" ] ; then
-  gem install hiera-eyaml
+  gem install --no-ri --no-rdoc hiera-eyaml
 fi

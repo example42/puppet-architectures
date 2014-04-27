@@ -6,10 +6,10 @@ yum install -y rubygems
 
 gem list | grep hiera-file
 if [ "x$?" == "x1" ] ; then
-  gem install hiera-file
+  gem install --no-ri --no-rdoc hiera-file
 fi
 
 gem list | grep hiera-eyaml
 if [ "x$?" == "x1" ] ; then
-  gem install hiera-eyaml
+  gem install --no-ri --no-rdoc hiera-eyaml
 fi

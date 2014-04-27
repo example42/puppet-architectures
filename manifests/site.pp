@@ -32,4 +32,4 @@ else { $end = 'prod' }
 
 
 # In site module is managed our grouping logic
-include site
+include ::site
