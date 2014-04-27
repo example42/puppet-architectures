@@ -89,7 +89,7 @@ Vagrant.configure("2") do |config|
       '--summarize',
 #      '--evaltrace',
 #      '--debug',
-#      '--parser future',
+      '--parser future',
     ]
   end
 end
