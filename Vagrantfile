@@ -29,6 +29,7 @@ nodes = [
 boxes = {
   :Centos64_64   => { :box => 'centos-64-x64-vbox4210',           :box_url => 'http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box',           :breed => 'redhat' },
   :Centos59_64   => { :box => 'centos-59-x64-vbox4210',           :box_url => 'http://puppet-vagrant-boxes.puppetlabs.com/centos-59-x64-vbox4210.box',           :breed => 'redhat' },
+  :Ubuntu1404_64 => { :box => 'trusty-server-cloudimg-amd64-vagrant-disk1.box', :box_url => 'https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box', :breed => 'debian' },
   :Ubuntu1204_64 => { :box => 'ubuntu-server-12042-x64-vbox4210', :box_url => 'http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210.box', :breed => 'debian' },
   :Ubuntu1004_64 => { :box => 'ubuntu-server-10044-x64-vbox4210', :box_url => 'http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-10044-x64-vbox4210.box', :breed => 'debian' },
   :Debian7_64    => { :box => 'debian-70rc1-x64-vbox4210',        :box_url => 'http://puppet-vagrant-boxes.puppetlabs.com/debian-70rc1-x64-vbox4210.box',        :breed => 'debian' },
