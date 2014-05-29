@@ -55,9 +55,8 @@ install_architecture() {
   install_cmd="ln -sf"
 #  install_cmd="cp -a"
   $install_cmd $1/Puppetfile Puppetfile
-  $install_cmd $1/manifests manifests 
+  $install_cmd $1/manifests manifests
   $install_cmd $1/site site
-  $install_cmd $1/hieradata hieradata 
   [ -f $1/hiera-vagrant.yaml ] && $install_cmd $1/hiera-vagrant.yaml hiera-vagrant.yaml  
   [ -f $1/hiera.yaml ] && $install_cmd $1/hiera.yaml hiera.yaml  
 #  [ -f $1/Vagrantfile ] && $install_cmd $1/Vagrantfile Vagrantfile
@@ -80,13 +79,9 @@ setup_default() {
 }
 
 clean() {
-#  ask_confirm
-#  echo_title "Removing modules dir, manifests/init.pp and Puppetfile from the Playground"
+  ask_confirm
+  echo_title "Removing site module, hiera.yaml Puppetfile"
   rm -f site
-  rm -rf manifests
-  rm -rf hieradata
-  rm -f hiera-vagrant.yaml
-  rm -f hiera.yaml
   rm -f Puppetfile
   rm -f Puppetfile.lock
 }
@@ -119,17 +114,6 @@ while [ $# -gt 0 ]; do
       architecture=$2
       shift 2
       ;;
-    setup)
-      action=$1
-      setup_action=$2
-      shift 2
-      ;;
-    puppi)
-      action=$1
-      shift
-      puppi_action=$*
-      shift $#
-      ;;
     *)
       showhelp
       exit
@@ -140,13 +124,7 @@ done
 case $action in 
   list) list_architecture ;;
   install) install_architecture $architecturedir/$architecture ;;
-  import) install_architecture $architecture_path ;;
   status) status ;;
-  run ) run_playground $run_vm ;;
-  up ) up_playground $up_vm ;;
-  setup ) setup_$setup_action ;;
-  forge ) run_forge ;;
-  puppi ) run_puppi ;;
   * ) showhelp ;;
 esac
 
