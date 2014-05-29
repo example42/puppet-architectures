@@ -1,3 +1,0 @@
-class site::settings {
-
-}

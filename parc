@@ -38,6 +38,7 @@ ask_confirm () {
 cat << EOF
 Going to relink another architecture,
 local changes remain in the architecture dir you were working on
+Are you sure you want to continue (y/n)?
 EOF
 
   read answer
@@ -57,6 +58,7 @@ install_architecture() {
   $install_cmd $1/Puppetfile Puppetfile
   $install_cmd $1/manifests manifests
   $install_cmd $1/site site
+  $install_cmd $1/hieradata hieradata
   [ -f $1/hiera-vagrant.yaml ] && $install_cmd $1/hiera-vagrant.yaml hiera-vagrant.yaml  
   [ -f $1/hiera.yaml ] && $install_cmd $1/hiera.yaml hiera.yaml  
 #  [ -f $1/Vagrantfile ] && $install_cmd $1/Vagrantfile Vagrantfile
