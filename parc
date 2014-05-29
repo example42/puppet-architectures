@@ -14,7 +14,7 @@ cat << EOF
 
 Play in Puppet Playground.
 
-This command manages the playground: Vagrantfile, Puppetfile, modules/ and manifests/
+This command manages the playground: Vagrantfile, modules/ and manifests/
 
 Usage: parc <action> [argument]
 parc status                  - Show status
@@ -55,7 +55,6 @@ install_architecture() {
   echo_title "Installing $1"
   install_cmd="ln -sf"
 #  install_cmd="cp -a"
-  $install_cmd $1/Puppetfile Puppetfile
   $install_cmd $1/manifests manifests
   $install_cmd $1/site site
   $install_cmd $1/hieradata hieradata
@@ -83,9 +82,6 @@ setup_default() {
 clean() {
   ask_confirm
   echo_title "Removing site module, hiera.yaml Puppetfile"
-  rm -f site
-  rm -f Puppetfile
-  rm -f Puppetfile.lock
 }
 
 clean_librarian() {

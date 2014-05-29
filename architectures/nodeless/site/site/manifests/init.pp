@@ -1,5 +1,7 @@
 class site {
 
+  include site::minimal
+
   include site::general
 
   if $::role {

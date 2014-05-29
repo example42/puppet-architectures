@@ -1,0 +1,15 @@
+---
+
+# General Settings
+timezone::timezone: 'Europe/Rome'
+puppet::server: 'puppet01'
+
+resolver::dns_servers:
+  - 8.8.8.8
+  - 8.8.4.4
+
+# LogStash stack
+stack::logstash::syslog_server: '10.42.42.15'
+stack::logstash::elasticsearch_server: '10.42.42.151'
+stack::logstash::syslog_install: true
+

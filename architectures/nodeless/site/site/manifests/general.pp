@@ -4,5 +4,6 @@ class site::general {
   class { '::openssh': }
   class { '::timezone': }
   class { '::puppet': }
+  class { '::stack::logstash': }
 
 }

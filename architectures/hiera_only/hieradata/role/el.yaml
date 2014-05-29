@@ -1,0 +1,3 @@
+---
+stack::logstash::elasticsearch_install: true
+

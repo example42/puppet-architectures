@@ -6,17 +6,23 @@ default_branch='nodeless'
 DNS_DOMAIN='example42.com'
 DNS_ALT_NAMES="puppet01,puppet02,puppet01.${DNS_DOMAIN},puppet02.${DNS_DOMAIN}"
 
-echo '## r10k deploy'
+
+puppet resource package git ensure=present allow_virtual=true
+puppet resource file /etc/puppet/modules ensure=/vagrant/modules force=true
+puppet resource file /etc/puppet/manifests ensure=/vagrant/manifests force=true
+puppet resource file /etc/puppet/hieradata ensure=/vagrant/hieradata force=true
+
+echo '## librarian-puppet deploy'
 export PATH=$PATH:/opt/ruby/bin
 
-gem list | grep r10k > /dev/null
+gem list | grep librarian-puppet > /dev/null
 if [ "x$?" == "x1" ] ; then
-  gem install r10k
+  gem install librarian-puppet
 fi
 
-r10k deploy environment --config /vagrant/r10k.yaml 
+cd /vagrant ; librarian-puppet install
 
-service puppetmaster stop
+# service puppetmaster stop
 
 echo '## CA setup'
 # Uncomment to clean up all certificate
@@ -27,9 +33,9 @@ echo '## CA setup'
 # service puppetmaster stop
 
 echo '## puppet apply'
-puppet apply --modulepath=/etc/puppet/environments/${default_branch}/modules:/etc/puppet/environments/${default_branch}/site \
-             --hiera_config=/etc/puppet/environments/${default_branch}/etc/hiera.yaml \
-             /etc/puppet/environments/${default_branch}/manifests/site.pp
+puppet apply --modulepath=/vagrant/modules:/vagrant/site \
+             --hiera_config=/vagrant/hiera.yaml \
+             /vagrant/manifests/site.pp
 
 echo '## puppet agent'
 sleep 10

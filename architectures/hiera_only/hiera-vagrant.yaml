@@ -5,7 +5,7 @@
 
 :hierarchy:
   - nodes/%{fqdn}
-  - role/%{role}_${env}
+  - role/%{role}_%{env}
   - role/%{role}
   - common
 
