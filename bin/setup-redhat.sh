@@ -8,10 +8,7 @@ if [ "x$?" == "x1" ] ; then
   rpm -ivh https://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
 fi
 
-rpm -qa | grep 'puppet-'
-if [ "x$?" == "x1" ] ; then
-  yum install -y puppet
-fi
+yum install -y puppet
 
 rpm -qa | grep 'rubygems'
 if [ "x$?" == "x1" ] ; then

@@ -2,7 +2,7 @@ class site::minimal {
 
   case $::osfamily {
     redhat: {
-      include yum::repo::epel
+      #      include yum::repo::epel
       include yum::repo::puppetlabs
       package { 'redhat-lsb': ensure => present }
     }
