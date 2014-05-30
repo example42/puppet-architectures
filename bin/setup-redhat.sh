@@ -27,3 +27,6 @@ gem list | grep hiera-eyaml
 if [ "x$?" == "x1" ] ; then
   gem install --no-ri --no-rdoc hiera-eyaml
 fi
+
+puppet resource host puppet ip=10.42.42.10
+

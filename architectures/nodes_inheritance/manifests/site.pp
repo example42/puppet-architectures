@@ -41,7 +41,7 @@ node /^web\d+\.example42\.com$/ inherits prod {
   include site
 }
 node 'puppet.example42.com' inherits prod {
-  $role = 'puppetmaster'
+  $role = 'puppet'
   include site
 }
 node /^lb\d+\.example42\.com$/ inherits prod {

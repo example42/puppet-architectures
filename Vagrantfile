@@ -13,16 +13,19 @@ default_ram = '256'
 # Default number of cpu  (can be overriden per node)
 default_cpu = '1'
 
+# Default puppetmode (How Puppet is run: agent, needs the puppet VM running, apply (default) is masterless)
+mode = 'apply'
+
 # Nodes list
 nodes = [
   { :hostname => 'puppet',    :ip => '10.42.42.10',  :puppetmode => 'apply', ram: '515', cpu: '2' },
-  { :hostname => 'lb01',      :ip => '10.42.42.91',  :puppetmode => 'agent' },
-  { :hostname => 'web01',     :ip => '10.42.42.101', :puppetmode => 'agent' },
-  { :hostname => 'web02',     :ip => '10.42.42.102', :puppetmode => 'agent' },
-  { :hostname => 'db01',      :ip => '10.42.42.141', :puppetmode => 'agent', ram: '512' },
-  { :hostname => 'el01',      :ip => '10.42.42.151', :puppetmode => 'agent' },
-  { :hostname => 'log',       :ip => '10.42.42.15',  :puppetmode => 'agent' },
-  { :hostname => 'mon',       :ip => '10.42.42.16',  :puppetmode => 'agent' },
+  { :hostname => 'lb01',      :ip => '10.42.42.91',  :puppetmode => mode },
+  { :hostname => 'web01',     :ip => '10.42.42.101', :puppetmode => mode },
+  { :hostname => 'web02',     :ip => '10.42.42.102', :puppetmode => mode },
+  { :hostname => 'db01',      :ip => '10.42.42.141', :puppetmode => mode , ram: '512' },
+  { :hostname => 'el01',      :ip => '10.42.42.151', :puppetmode => mode },
+  { :hostname => 'log',       :ip => '10.42.42.15',  :puppetmode => mode },
+  { :hostname => 'mon',       :ip => '10.42.42.16',  :puppetmode => mode },
 ]
 
 # Boxes available
@@ -49,7 +52,9 @@ Vagrant.configure("2") do |config|
   # Nodes configuration
   nodes.each do |node|
 
-    config.vm.provision "shell", path: 'bin/setup-puppetmaster.sh' if node[:hostname] == 'puppet'
+    if node[:hostname] == 'puppet'
+#      config.vm.provision "shell", path: 'bin/setup-puppetmaster.sh'
+    end
 
     config.vm.define node[:hostname] do |node_config|
       node_config.vm.box = boxes[default_os.to_sym][:box]

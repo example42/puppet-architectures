@@ -15,7 +15,7 @@ Exec {
 # Roles are based on hostnames
 case $::hostname {
   /^web/: { $role = 'web' }
-  /^puppet/: { $role = 'puppetmaster' }
+  /^puppet/: { $role = 'puppet' }
   /^lb/: { $role = 'lb' }
   /^log/: { $role = 'log' }
   /^db/: { $role = 'db' }

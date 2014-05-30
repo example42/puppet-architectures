@@ -26,8 +26,10 @@ mod 'example42/haproxy'
 mod 'example42/elasticsearch'
 mod 'example42/kibana'
 mod 'example42/logstash'
+mod 'example42/rsyslog'
 mod 'example42/mysql'
 mod 'example42/nagios'
+mod 'example42/php'
 
 mod "example42/stack",
   :git => "git://github.com/example42/puppet-stack.git"
