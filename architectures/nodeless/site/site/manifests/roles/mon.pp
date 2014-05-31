@@ -1,4 +1,3 @@
 class site::roles::mon {
-  class { '::nagios':
-  }
+  include nagios
 }

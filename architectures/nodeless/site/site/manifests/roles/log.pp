@@ -1,4 +1,3 @@
 class site::roles::log {
-  class { '::logstash':
-  }
+  # Logstash installed via stack parameters
 }

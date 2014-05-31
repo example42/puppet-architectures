@@ -1,4 +1,3 @@
 class site::roles::web {
-  class { '::php':
-  }
+  include php
 }

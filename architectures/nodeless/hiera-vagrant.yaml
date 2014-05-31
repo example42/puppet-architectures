@@ -2,6 +2,8 @@
 :backends:
   - eyaml
 
+:logger: 'noop'
+
 :hierarchy:
   - "nodes/%{fqdn}"
   - "role/%{role}_%{env}"

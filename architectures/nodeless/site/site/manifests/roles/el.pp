@@ -1,4 +1,7 @@
 class site::roles::el {
-  class { '::elasticsearch':
-  }
+
+  # Elastic search managed via stack
+  #  class { '::elasticsearch':
+  #  }
+
 }

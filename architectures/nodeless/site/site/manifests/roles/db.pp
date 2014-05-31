@@ -1,4 +1,3 @@
 class site::roles::db {
-  class { '::mysql':
-  }
+  include mysql
 }
