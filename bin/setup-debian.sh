@@ -1,22 +1,27 @@
 #!/bin/bash
 cd /root
 if [ ! -f puppetlabs-release-precise.deb ] ; then 
-  wget http://apt.puppetlabs.com/puppetlabs-release-precise.deb
-  dpkg -i puppetlabs-release-precise.deb
-  apt-get update
-  apt-get install -y puppet
+  echo "## Installing Puppetlabs repository"
+  wget http://apt.puppetlabs.com/puppetlabs-release-precise.deb 2>&1>/dev/null 
+  dpkg -i puppetlabs-release-precise.deb 2>&1>/dev/null
+  apt-get update 2>&1>/dev/null
 fi
 
-dpkg -s git || apt-get install git -y
 
-gem list | grep hiera-file > /dev/null
+echo "## Installing Puppet and its dependencies"
+dpkg -s puppet 2>&1>/dev/null || apt-get install puppet -y 2>&1>/dev/null
+dpkg -s rubygems 2>&1>/dev/null || apt-get install rubygems -y 2>&1>/dev/null
+dpkg -s git 2>&1>/dev/null || apt-get install git -y 2>&1>/dev/null
+
+gem list | grep hiera-file 2>&1>/dev/null
 if [ "x$?" == "x1" ] ; then
   gem install --no-ri --no-rdoc hiera-file
 fi
 
-gem list | grep hiera-eyaml > /dev/null
+gem list | grep hiera-eyaml 2>&1>/dev/null
 if [ "x$?" == "x1" ] ; then
   gem install --no-ri --no-rdoc hiera-eyaml
 fi
 
-puppet resource host puppet ip=10.42.42.10
+puppet resource host puppet ip=10.42.42.10 2>&1>/dev/null
+
