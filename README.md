@@ -1,12 +1,19 @@
 # Puppet Architectures
 
-Sample Puppet architectures layouts for the book [Extending Puppet](http://www.packtpub.com/extending-puppet/book)  which can be tested via Vagrant.
+Sample Puppet architectures layouts that can be tested in a Vagrant environment
+
+This is the downloadable material for the book [Extending Puppet](http://www.packtpub.com/extending-puppet/book).
+
+Consider it as a live reference that can fail at times.
+This is an ongoing work in progress, not all combinations of architectures, machine types and Linux distributions have been tested, and new problems might arise with future Puppet and Vagrant versions. 
 
 ## Installation
 
-This is a multi vm Vagrant environment where you can test different Puppet setups.
-The usual vagrant commands apply.
-Use the ./parc script to select and use an alternative architectures.
+This is basically a multi VM Vagrant environment where you can test different Puppet setups.
+
+The usual vagrant commands apply. Ttpe ```vagrant help``` for Vagrant commands.
+
+Different architectures examples can be installed with the ```parc``` script.
 
 Needed software:
 - [Puppet](http://www.puppetlabs.com/)
@@ -37,7 +44,7 @@ To start one VM (here: web01) Note that the first time you do it it may take som
 
     vagrant up web01
 
-To start all the VMs
+To start all the VMs (Warning: This might consume a lot of resources for your system) :
 
     vagrant up
 
@@ -59,11 +66,11 @@ The domain to use for all your nodes:
 
     domain = 'example42.com'
 
-How much RAM to allocate for each VM (can be overriden per node)
+How much RAM to allocate for each VM by default (can be overridden per node):
 
     default_ram = '256'
 
-How many Vrtual CPUs to allocate for each VM (can be overriden per node)
+How many Vrtual CPUs to allocate for each VM (can be overridden per node)
 
     default_cpu = '1'
 
@@ -71,8 +78,15 @@ You can also change the VM available under Vagrant, editing the 'nodes' hash, an
 
 
 
-## Issues
+## Possible issues
 
-If you have problems with shared folders be sure to have on the used Vagrant boxes a version of VirtualBox additions compatible with the one of your Host.
-Install the vagrant vbguest plugin to automatically update the VBox additions when starting a box.
+- If you have problems with shared folders be sure to have on the used Vagrant boxes a version of VirtualBox additions compatible with the one of your Host. Install the vagrant vbguest plugin to automatically update the VBox additions when starting a box.
+- Problems during Puppet provisioning are expected. They might be due to:
+  - The installed Puppet version might not be compatible with the used modules
+  - The specific combination of architectures, VM type and used OS may not work out of the box
+  - Many more or less arcane or untested conditions
+
+Please open bug reports on [GitHub](https://github.com/example42/puppet-architectures/issues)
+
+
 
