@@ -1,14 +1,14 @@
 # Based on https://github.com/patrickdlee/vagrant-examples/blob/master/example7/Vagrantfile
 
 # Select the OS you want to use (see boxes list below)
-default_os = 'Centos64_64'
-#default_os = 'Ubuntu1204_64'
+#default_os = 'Centos64_64'
+default_os = 'Ubuntu1204_64'
 
 # Define your domain
 domain = 'example42.com'
 
 # Default ram (can be overriden per node)
-default_ram = '256'
+default_ram = '128'
 
 # Default number of cpu  (can be overriden per node)
 default_cpu = '1'
