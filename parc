@@ -36,8 +36,7 @@ echo_title () {
 
 ask_confirm () {
 cat << EOF
-Going to relink another architecture,
-local changes remain in the architecture dir you were working on
+Going to relink another architecture.
 Are you sure you want to continue (y/n)?
 EOF
 
@@ -58,20 +57,13 @@ install_architecture() {
   $install_cmd $1/manifests manifests
   $install_cmd $1/site site
   $install_cmd $1/hieradata hieradata
+  $install_cmd $1/README.md README.architecture.md
   [ -f $1/hiera-vagrant.yaml ] && $install_cmd $1/hiera-vagrant.yaml hiera-vagrant.yaml  
   [ -f $1/hiera.yaml ] && $install_cmd $1/hiera.yaml hiera.yaml  
 #  [ -f $1/Vagrantfile ] && $install_cmd $1/Vagrantfile Vagrantfile
 
   echo_title "Running librarian-puppet install"  
   librarian-puppet install
-}
-
-run_puppi() {
-  echo_title "Running puppi $puppi_action on the active boxes of the Playground"
-  for vm in $(vagrant status | grep 'running$' | cut -d ' ' -f 1 ) ; do
-    echo_title "puppi check on $vm"
-    vagrant ssh $vm -c "sudo /usr/sbin/puppi $puppi_action"
-  done
 }
 
 setup_default() {
@@ -81,7 +73,6 @@ setup_default() {
 
 clean() {
   ask_confirm
-  echo_title "Removing site module, hiera.yaml Puppetfile"
 }
 
 clean_librarian() {
