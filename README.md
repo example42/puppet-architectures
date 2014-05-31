@@ -68,16 +68,10 @@ The most important contents of this repository are:
 
     bin          # Directory with scripts used by Vagrant during provisioning and other tools
 
-    hiera-vagrant.yaml # The Hiera file used by Vagrant during Puppet provisioning in apply mode.
-                       # This is a link created by the parc script that points to -> architectures/$linked_architecture/hiera-vagrant.yaml
-
-    hiera.yaml         # The Hiera file supposed to be used on the Puppet Master, when provisioning in agent mode.
-                       # This is a link created by the parc script that points to -> architectures/$linked_architecture/hiera.yaml
-
-    hieradata    # The directory that contains Hiera's data, organized following 
-                 # Also this is a link to -> architectures/$linked_architecture/hieradata
-
     keys         # Directory that contains the hiera-eyaml keys to encrypt data.
+
+    parc         # Simple script that quickly installs a new architecture, changing links in the main directory.
+                 # It creates links to files in the architectures/$linked_architecture/ directory
 
     manifests    # Directory that contains the manifests used by Vagrant
                  # Link to -> architectures/$linked_architecture/manifests
@@ -88,6 +82,15 @@ The most important contents of this repository are:
                  # Link to  -> architectures/$linked_architecture/site
 
     parc         # Simple script that quickly links a new architecture, changing links in the main directory.
+
+    hieradata    # The directory that contains Hiera's data, organized following the hierarchy in hiera.yaml files 
+                 # Link to -> architectures/$linked_architecture/hieradata
+
+    hiera-vagrant.yaml # The Hiera file used by Vagrant during Puppet provisioning in apply mode.
+                       # Link to -> architectures/$linked_architecture/hiera-vagrant.yaml
+
+    hiera.yaml         # The Hiera file supposed to be used on the Master, when provisioning in agent mode.
+                       # Link to -> architectures/$linked_architecture/hiera.yaml
 
     r10k.yaml    # Sample configuration file for r10k
 
@@ -139,9 +142,9 @@ You can change the Puppet options to test future parser or enable debugging opti
       '--show_diff',
       '--pluginsync',
       '--summarize',
-#      '--evaltrace',
-#      '--debug',
-#      '--parser future',
+    # '--evaltrace',
+    # '--debug',
+    # '--parser future',
     ]
  
 
