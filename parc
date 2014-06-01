@@ -54,9 +54,9 @@ install_architecture() {
   echo_title "Installing $1"
   install_cmd="ln -sf"
 #  install_cmd="cp -a"
-  $install_cmd $1/manifests manifests
-  $install_cmd $1/site site
-  $install_cmd $1/hieradata hieradata
+  $install_cmd $1/manifests .
+  $install_cmd $1/site .
+  $install_cmd $1/hieradata .
   $install_cmd $1/README.md README.architecture.md
   $install_cmd $1/hiera-vagrant.yaml hiera-vagrant.yaml  
   $install_cmd $1/hiera.yaml hiera.yaml  
@@ -68,9 +68,9 @@ install_architecture() {
 
 clean() {
   ask_confirm
-  rm hieradata
-  rm site
-  rm manifests
+  rm hieradata >/dev/null 2>&1
+  rm site >/dev/null 2>&1
+  rm manifests >/dev/null 2>&1
 }
 
 clean_librarian() {
