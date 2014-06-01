@@ -3,3 +3,9 @@
 .tmp/
 /modules
 /Puppetfile.lock
+README.architecture.md
+/site
+/hieradata
+/manifests
+hiera.yaml
+hiera-vagrant.yaml
