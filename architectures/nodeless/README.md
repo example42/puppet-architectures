@@ -1,6 +1,7 @@
 = Sample NodeLess + Site module Puppet setup
 
 Structure:
+
 - site.pp:
 -- Sets identifying variables as top scope, according to hostname or other facts
 -- Just includes the site class
@@ -9,9 +10,10 @@ Structure:
 - Module site:
 -- Provides local files and templates
 -- Manages classes grouping logic (here a general + role classes)
--- Defines infrastructure variables in site::settings according to top scope vars and site logic
--- Uses explicit class declarations with parameters style
+-- Uses a stack::logstash class for logs management
 
-- Hiera is not used.
+- Hiera:
+-- Used for data.
+
 - ENC is not used.
 

@@ -11,7 +11,6 @@ This a sample setup based on nodes inheritance.
 - Module site:
 -- Provides local files and templates
 -- Manages classes grouping logic (here a general + role classes)
--- Defines infrastructure variables in site::settings according to top scope vars and site logic
 -- Uses explicit class declarations with parameters style
 
 - Hiera is not used.

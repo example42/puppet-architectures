@@ -2,15 +2,12 @@ class site::minimal {
 
   case $::osfamily {
     redhat: {
-      #      include yum::repo::epel
-      include yum::repo::puppetlabs
+      # include yum::repo::epel
+      # include yum::repo::puppetlabs
       package { 'redhat-lsb': ensure => present }
     }
     debian: {
-      include apt::repo::puppetlabs
-      class { 'apt':
-        force_aptget_update => true,
-      }
+      # include apt::repo::puppetlabs
       package { 'lsb-release': ensure => present }
   }
     suse: {
