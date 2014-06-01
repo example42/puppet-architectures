@@ -3,9 +3,11 @@ cd /root
 
 echo "## Installing latest Puppet version and dependencies"
 
-rpm -qa | grep puppetlabs-release 2>&1>/dev/null
-if [ "x$?" == "x1" ] ; then
-  rpm -ivh https://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
+if [ "x$1" == "xlatest" ] ; then
+  rpm -qa | grep puppetlabs-release 2>&1>/dev/null
+  if [ "x$?" == "x1" ] ; then
+    rpm -ivh https://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
+  fi
 fi
 
 rpm -qa | grep '^puppet-' 2>&1>/dev/null

@@ -16,6 +16,9 @@ default_cpu = '1'
 # Default puppetmode (How Puppet is run: agent, needs the puppet VM running, apply (default) is masterless)
 mode = 'apply'
 
+# Puppet version to install: 'default': As provided in the box, 'latest': Installed from PuppetLabs repos
+puppetversion = 'latest'
+
 # Nodes list
 nodes = [
   { :hostname => 'puppet',    :ip => '10.42.42.10',  :puppetmode => 'apply', ram: '515', cpu: '2' },
@@ -47,7 +50,7 @@ Vagrant.configure("2") do |config|
   config.cache.auto_detect = true
 
   # Shell provisioner, to setup minimal conditions for Puppet provisioning
-  config.vm.provision "shell", path: 'bin/setup-' + boxes[default_os.to_sym][:breed] + '.sh'
+  config.vm.provision "shell", path: 'bin/setup-' + boxes[default_os.to_sym][:breed] + '.sh', args: puppetversion
 
   # Nodes configuration
   nodes.each do |node|
