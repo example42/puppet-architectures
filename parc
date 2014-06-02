@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 if ( [ ! -f Vagrantfile ] || [ ! -d architectures ] ) ; then
   echo "Cant find Vagrantfile"
   echo "Change your cwd to your cloned puppet-architectures directory and then run ./parc"

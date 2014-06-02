@@ -1,7 +1,7 @@
 # Based on https://github.com/patrickdlee/vagrant-examples/blob/master/example7/Vagrantfile
 
 # Select the OS you want to use (see boxes list below)
-#default_os = 'Centos64_64'
+# default_os = 'Centos64_64'
 default_os = 'Ubuntu1204_64'
 
 # Define your domain
@@ -16,8 +16,11 @@ default_cpu = '1'
 # Default puppetmode (How Puppet is run: agent, needs the puppet VM running, apply (default) is masterless)
 mode = 'apply'
 
-# Puppet version to install: 'default': As provided in the box, 'latest': Installed from PuppetLabs repos
-puppetversion = 'latest'
+# Puppet version to install:
+# 'original': As provided in the box
+# 'latest': Installed from PuppetLabs repos
+# 'x.y.z-k': Specific version, installed from PuppetLabs repos
+puppetversion = '3.5.1-1'
 
 # Nodes list
 nodes = [

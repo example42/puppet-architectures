@@ -62,7 +62,7 @@ The most important contents of this repository are:
     Puppetfile    # The configuration file for librarian-puppet and r10k.
                   # It contains the list of modules to install in the modules/ dir
 
-    Vagrantfile   # The Vagrant configuration file. Check below for more info on how to customize it.
+    Vagrantfile   # The Vagrant configuration file. Find below info on how to customize it.
 
     architectures # A directory that contains different sample Puppet architectures
 
@@ -70,31 +70,30 @@ The most important contents of this repository are:
 
     keys         # Directory that contains the hiera-eyaml keys to encrypt data.
 
-    parc         # Simple script that quickly installs a new architecture, changing links in the main directory.
+    parc         # Script that installs a new architecture, changing links in the main directory.
                  # It creates links to files in the architectures/$linked_architecture/ directory
 
     manifests    # Directory that contains the manifests used by Vagrant
                  # Link to -> architectures/$linked_architecture/manifests
 
-    modules      # Directory that contains the public shared modules. As installed by librarian-puppet or r10k
+    modules      # Directory that contains the public shared modules.
+                 # As installed by librarian-puppet or r10k
 
     site         # Directory that contains custom, site modules.
                  # Link to  -> architectures/$linked_architecture/site
 
-    parc         # Simple script that quickly links a new architecture, changing links in the main directory.
-
-    hieradata    # The directory that contains Hiera's data, organized following the hierarchy in hiera.yaml files 
+    hieradata    # The directory that contains Hiera's data, organized as defined in hiera.yaml 
                  # Link to -> architectures/$linked_architecture/hieradata
 
     hiera-vagrant.yaml # The Hiera file used by Vagrant during Puppet provisioning in apply mode.
                        # Link to -> architectures/$linked_architecture/hiera-vagrant.yaml
 
-    hiera.yaml         # The Hiera file supposed to be used on the Master, when provisioning in agent mode.
+    hiera.yaml         # The Hiera file used on the Master, when provisioning in agent mode.
                        # Link to -> architectures/$linked_architecture/hiera.yaml
 
     r10k.yaml    # Sample configuration file for r10k
 
-    samples      # Directory containing various sample files. Such as manifests to test the future parser.
+    samples      # Directory containing various sample files. Related to specific book chapters
 
 
 ## Customizing the Vagrantfile
@@ -133,6 +132,13 @@ You can update or modify the Vagrant boxes to use, editing the ```boxes``` hash.
       :box_url => 'http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box',
       :breed => 'redhat'
     },
+
+The puppet version to install on the nodes. Various options are available:
+- '```original```': Keep the Puppet version provided in the Vagrant box
+- '```latest```': Install latest Puppet version from PuppetLabs repos
+- '```x.y.z-k```': Install a specific version from PuppetLabs repos
+
+     puppetversion = '3.5.1-1'
 
 You can change the Puppet options to test future parser or enable debugging options: 
 
