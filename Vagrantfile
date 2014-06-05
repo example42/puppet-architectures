@@ -8,7 +8,7 @@ default_os = 'Ubuntu1204_64'
 domain = 'example42.com'
 
 # Default ram (can be overriden per node)
-default_ram = '128'
+default_ram = '256'
 
 # Default number of cpu  (can be overriden per node)
 default_cpu = '1'

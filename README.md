@@ -24,11 +24,11 @@ Needed software:
 - [Librarian Puppet](http://librarian-puppet.com/)
 - [Git](http://git-scm.com/)
 - Plugin: [vagrant-cachier](http://fgrehm.viewdocs.io/vagrant-cachier)
-  This is Optional. Can be installed with: vagrant plugin install vagrant-cachier
+  This is Required. Can be installed with: vagrant plugin install vagrant-cachier
 - Plugin: [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest) (Optional)
   This is Optional. Can be installed with: vagrant plugin install vagrant-vbguest
 
-Once you have these tools installed you can setup the envrionment with the architecture layout you prefer.
+Once you have these tools installed you can setup the environment with the architecture layout you prefer.
 
 To list the available architectures layout samples:
 
