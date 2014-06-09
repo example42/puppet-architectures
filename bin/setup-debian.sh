@@ -17,7 +17,7 @@ if [ "x$1" != "xoriginal" ] ; then
 fi
 
 echo "## Installing Puppet and its dependencies"
-dpkg -s puppet >/dev/null 2>&1 || apt-get update >/dev/null 2>&1 ; apt-get install puppet$puppetsuffix puppet-common$puppetsuffix -y # >/dev/null 2>&1
+dpkg -s puppet >/dev/null 2>&1 || apt-get update >/dev/null 2>&1 ; apt-get install puppet$puppetsuffix puppet-common$puppetsuffix -y >/dev/null 2>&1
 dpkg -s rubygems >/dev/null 2>&1 || apt-get install rubygems -y >/dev/null 2>&1
 dpkg -s git >/dev/null 2>&1 || apt-get install git -y >/dev/null 2>&1
 
