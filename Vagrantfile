@@ -55,6 +55,9 @@ Vagrant.configure("2") do |config|
   # Shell provisioner, to setup minimal conditions for Puppet provisioning
   config.vm.provision "shell", path: 'bin/setup-' + boxes[default_os.to_sym][:breed] + '.sh', args: puppetversion
 
+  # See https://github.com/mitchellh/vagrant/issues/1673
+  config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+
   # Nodes configuration
   nodes.each do |node|
 
