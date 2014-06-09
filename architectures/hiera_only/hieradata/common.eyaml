@@ -6,7 +6,7 @@ classes:
   - openssh
   - timezone
   - resolver
-  - stack_logstash
+  - stack::logstash
 
 # General Settings
 timezone::timezone: 'Europe/Rome'
@@ -17,7 +17,7 @@ resolver::dns_servers:
   - 8.8.4.4
 
 # LogStash stack
-stack_logstash::syslog_server: '10.42.42.15'
-stack_logstash::elasticsearch_server: '10.42.42.151'
-stack_logstash::install_syslog: true
+stack::logstash::syslog_server: '10.42.42.15'
+stack::logstash::elasticsearch_server: '10.42.42.151'
+stack::logstash::install_syslog: true
 
