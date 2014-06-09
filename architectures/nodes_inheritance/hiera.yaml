@@ -3,13 +3,7 @@
   - eyaml
 
 :hierarchy:
-  - nodes/%{fqdn}
-  - role/%{role}_%{env}
-  - role/%{role}
   - common
-
-:yaml:
-  :datadir: /etc/puppet/hieradata
 
 :eyaml:
   :datadir: /etc/puppet/hieradata

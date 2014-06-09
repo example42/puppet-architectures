@@ -4,12 +4,12 @@
   - file
 
 :hierarchy:
-  - nodes/%{fqdn}
-  - role/%{role}_%{env}
-  - role/%{role}
+  - "nodes/%{fqdn}"
+  - "role/%{role}_%{env}"
+  - "role/%{role}"
   - common
 
-eyaml:
+:eyaml:
   :datadir: /vagrant/hieradata
   :pkcs7_private_key: /vagrant/keys/private_key.pkcs7.pem
   :pkcs7_public_key:  /vagrant/keys/public_key.pkcs7.pem

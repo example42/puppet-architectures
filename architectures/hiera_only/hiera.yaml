@@ -4,14 +4,11 @@
   - file
 
 :hierarchy:
-  - nodes/%{fqdn}
-  - role/%{role}_%{env}
-  - role/%{role}
-  - "%{osfamily}
+  - "nodes/%{fqdn}"
+  - "role/%{role}_%{env}"
+  - "role/%{role}"
+  - "%{osfamily}"
   - common
-
-:yaml:
-  :datadir: /etc/puppet/hieradata
 
 :eyaml:
   :datadir: /etc/puppet/hieradata
