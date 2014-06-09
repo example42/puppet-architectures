@@ -49,8 +49,14 @@ list_architecture() {
 }
 
 install_architecture() {
-  clean
-  echo_title "Installing $1"
+  if [ -d "$(pwd)/${1}" ]; then
+    clean
+    echo_title "Installing $1"
+  else
+    echo_title "Architecture not found"
+    list_architecture
+    exit 1
+  fi 
   install_cmd="ln -sf"
 #  install_cmd="cp -a"
   $install_cmd $1/manifests .
