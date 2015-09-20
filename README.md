@@ -1,8 +1,8 @@
+# The [DevOps] Guide to Puppet, Universe, and Everything
+
 # Puppet Architectures
 
-This is the downloadable material for the book [Extending Puppet](http://www.packtpub.com/extending-puppet/book).
-
-It contains sample Puppet architectures layouts that can be tested in a Vagrant environment.
+This repository contains sample Puppet architecture layouts that can be tested in a Vagrant environment.
 
 Consider it as a live reference, mostly oriented to show different usage patterns on how code and data can be managed in Puppet architectures.
 
@@ -165,8 +165,6 @@ Many elements are involved:
 - The sample architectures might not have all the correct settings for all the nodes' roles
 - The used OS, depending on the used Vagrant box might not be fully supported in all the combinations
 - Many more or less arcane or untested conditions
-
-Please open bug reports on [GitHub](https://github.com/example42/puppet-architectures/issues)
 
 
 
